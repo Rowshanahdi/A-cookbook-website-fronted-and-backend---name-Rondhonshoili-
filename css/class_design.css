@@ -1,0 +1,240 @@
+:root {
+    --rb: #9bd1ba;
+    --w: #224d4d;
+    --k: #f69330;
+    --brigh: #eddb56;
+    --bright: #fdf6bc;
+    --black: #444;
+    --light-color: #4baa81;
+    --border: 0.4rem solid rgba(19, 24, 96, 0.548);
+    --border-hover: 1rem solid var(--black);
+    --box-shadow: 0 0.5rem 1rem rgba(69, 122, 100, 0.017);
+    --brown: #9c5c32;
+}
+
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--rb);
+    background-size: cover;
+    color: var(--w);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header Styling */
+.heads {margin-bottom: 3%;
+    margin-top: 3%;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Flip Container */
+.flip-container {
+    font-size: 20px;
+    margin: 4%;
+    perspective: 1000px;
+    width: 50%;
+    height: 450px;  /* Adjusted height */
+    margin-top: 2%;
+    border-radius:  0px;
+overflow: hidden;
+
+}
+
+/* Flipper for flipping effect */
+.flipper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); 
+}
+
+/* Flipped state for card */
+.flipper.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back of the flip card */
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    text-align: center;
+    background:var(--rb);
+    padding: 20px;
+    border-radius: 60px 60px 60px 60px;
+
+    box-shadow: var(--box-shadow);
+}
+
+/* Back side transformation */
+.back {
+    transform: rotateY(180deg);
+     border-radius: 60px 60px 60px 60px;
+
+}
+
+/* Flip Button Styling */
+.flip-button {
+    margin: 5%;
+    margin-top: 13px;
+    padding: 10px 20px;
+    background: var(--light-color);
+    color: var(--bright);
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.flip-button:hover {box-shadow: 6px 5px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+   
+    background: var(--k);
+    transform: scale(1.1); /* Reduced scale effect */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.registration-box {
+    width: 50%;
+    background:#e2e8bc;;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 40px auto;
+    color: var(--w);
+    font-size: 18px;
+}
+
+.registration-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--w);
+}
+
+.registration-box input[type="email"],
+.registration-box input[type="text"],
+.registration-box input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+   text-transform: none;
+}
+
+.registration-box ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.registration-box .note {
+    font-size: 14px;
+    color: #666;
+    margin-top: -10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.payment-input {
+    margin-bottom: 12px;
+}
+
+/* Hide File Upload by Default */
+#paymentScreenshot {
+    display: none;
+}
+
+/* Hide Transaction ID input if File is selected */
+#transactionId {
+    display: block;
+}
+
+/* Hide Transaction ID input when file is selected */
+#paymentScreenshot {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

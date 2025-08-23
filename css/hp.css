@@ -1,0 +1,396 @@
+:root {
+    --rb: #9bd1ba; /* Muted greenish-blue */
+    --w: #224d4d; /* Teal - Primary text color */
+    --bright: #fca04f; /* Muted orange */
+    --brigh: #eddb56; /* Soft yellow */
+    --bright: #faf6d5; /* Soft yellowish */
+    --black: #444; /* Dark text color */
+    --light-color: #4baa81; /* Light green */
+    --border: .4rem solid rgba(19, 24, 96, 0.548); /* Border color */
+    --border-hover: 1rem solid var(--black); /* Border hover effect */
+    --box-shadow: 0 .5rem 1rem rgba(69, 122, 100, 0.017); /* Box shadow */
+    --brown: #9c5c32; /* Brown */
+}
+
+
+
+
+
+
+
+
+
+/* Recipes Section Styling */
+.recipes {
+    position: relative; /* Ensures images are positioned relative to this container */
+}
+
+/* Positioning the Top-left Image */
+.top-left-img {
+    position: absolute;
+    top: -8px;  /* Adjust to position it closer to the top of the card container */
+    left: -226px;/* Adjust to position it closer to the left of the card container */
+    width: 450px;  /* Adjust size of the image */
+    height: 450px; /* Adjust size of the image */
+    opacity: 0.9;  /* Adjust opacity */
+    z-index: 1;    /* Keep it behind the cards */
+    animation: spin 88s linear infinite; 
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); /* Start from 0 degrees */
+    }
+    100% {
+        transform: rotate(360deg); /* Complete one full rotation */
+    }
+}
+
+/* Positioning the Bottom-right Image */
+.bottom-right-img {
+    position: absolute;
+    bottom: -19px; /* Adjust to position it closer to the bottom of the card container */
+    right: -226px;  /* Adjust to position it closer to the right of the card container */
+    width: 420px;  /* Adjust size of the image */
+    height: 420px; /* Adjust size of the image */
+    opacity: 0.9;  /* Adjust opacity */
+    z-index: 1;    /* Keep it behind the cards */
+    animation: spin 88s linear infinite; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Universal reset for elements */
+* {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+/* Global HTML settings */
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    overflow-x: hidden;
+    scroll-padding-top: 5rem;
+    scroll-behavior: smooth;
+}
+
+/* Body */
+body {
+    height: 1vh; /* 100% of the viewport height */
+    margin: 0;
+    background: var(--rb); /* Muted greenish-blue background */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Header Styles */
+.header .header-1 {
+    background: var(--rb); /* Muted greenish-blue background */
+    padding: 1.6rem 10%;
+    display: flex;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Logo Styles */
+.header .header-1 .logo {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.6rem;
+    padding: .8px;
+    font-weight: bolder;
+    color: var(--w); /* Teal color */
+    text-align: center;
+}
+
+.header .header-1 .logo:hover {
+    color: var(--bright); /* Muted orange hover */
+}
+
+/* Icons Styles */
+.header .header-1 .icons div,
+.header .header-1 .icons a {
+    padding: .5rem;
+    font-size: 2rem;
+    margin-left: 1.5rem;
+    color: var(--w); /* Teal color */
+    cursor: pointer;
+}
+
+.header .header-1 .icons div:hover,
+.header .header-1 .icons a:hover {
+    color: var(--bright); /* Muted orange hover */
+}
+
+/* Navbar Styles */
+.header .header-1 .navbar {
+    text-align: left;
+}
+
+.header .header-1 .navbar a {
+    padding: .5rem;
+    font-size: 2rem;
+    margin-left: 1rem;
+    color: var(--w); /* Teal color */
+    cursor: pointer;
+    display: inline;
+}
+
+.header .header-1 .navbar a:hover {
+    color: var(--bright); /* Muted orange hover */
+}
+
+/* Sticky Navbar Effect */
+.header .header-1.active {
+    background-color: var(--rb); /* Muted greenish-blue background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+    height: 60px;
+    transition: top 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transform: translateY(0);
+}
+
+/* Body height for longer pages */
+body {
+    height: 300rem;
+}
+
+/* Media Query for smaller screens */
+@media(max-width: 950px) {
+    html {
+        font-size: 40%; /* Smaller font size for mobile */
+    }
+    .header .header-1 {
+        padding: 1rem 5%;
+        height: 50px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Recipes Section Styling */
+.recipes {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9bd1ba;
+    padding-bottom: 40px;
+}
+
+/* Container for the cards */
+.con {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px 20px;
+   
+}
+
+/* Card Styling */
+.con .card {
+    top: -16px;
+    position: relative;
+    max-width: 400px;
+    width: 300px;
+    height: 400px;
+    background-color: antiquewhite;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    border-radius: 0px;
+    transition: all 0.4s ease-in-out;
+    border-radius:  160px 160px 4px 4px ;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow on the top */   
+
+}
+
+/* Card Hover Effect */
+.con .card:hover {
+    height: 480px;
+}
+
+/* Image Container */
+.con .card .pics {
+    top: -7px;
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius:  160px 160px 4px 4px ;
+     box-shadow: 0 -5px 15px rgb(250, 253, 154); /* Shadow on the top */   
+
+   }
+
+/* Image Styling */
+.con .card .pics img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Zoom Image on Hover */
+.con .card:hover .pics img {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px #9bd1ba;
+
+    transform: scale(1.2); /* normal soft zoom */
+}
+
+/* Card Detail Section */
+.con .detail {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease-in-out;
+    z-index: 2;
+}
+
+/* Show Detail Section on Hover */
+.con .card:hover .detail {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 10px;
+}
+
+/* View Recipe Button */
+.view-recipe-btn {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #000; /* You forgot background-color before */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Show Button on Hover */
+.con .card:hover .view-recipe-btn {
+    display: block;
+}
+
+/* Button Hover Effect */
+.view-recipe-btn:hover {
+    color: #d2c4c4;
+    background-color: #224d4d;
+}
+
+
+
+
+
+
+/* Headline Styling */
+.headline {
+    width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    margin-bottom: 30px; /* Added space below the headline */
+}
+
+.headline h2 {
+    font-size: 32px;
+    color: #333;
+    font-weight: 600; /* Bolder text */
+}
+
+.view-more {
+    font-size: 18px;
+    color: #111112;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500; /* Slightly bold for better emphasis */
+}
+
+.view-more:hover {
+    color: #003366;
+    text-decoration: underline;
+}
+
+.underline {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #333;
+    transition: width 0.4s ease-in-out;
+}
+
+.headline .underline {
+    width: 100%;
+}
+
+/* Container for View More Link */
+.view-more-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+

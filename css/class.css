@@ -1,0 +1,142 @@
+:root {
+    --rb: #9bd1ba;
+    --w: #224d4d;
+    --k: #f69330;
+    --brigh: #eddb56;
+    --bright: #fdf6bc;
+    --black: #444;
+    --light-color: #4baa81;
+    --border: 0.4rem solid rgba(19, 24, 96, 0.548);
+    --border-hover: 1rem solid var(--black);
+    --box-shadow: 0 0.5rem 1rem rgba(69, 122, 100, 0.017);
+    --brown: #9c5c32;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--rb);
+    background-size: cover;
+    color: var(--w);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header Styling */
+.heads {
+    margin-bottom: 3%;
+    margin-top: 3%;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Flip Container */
+.flip-container {
+    font-size: 20px;
+    margin: 4%;
+    perspective: 1000px;
+    width: 50%;
+    height: 400px;  /* Adjusted height */
+    margin-top: 2%;
+}
+
+/* Flipper for flipping effect */
+.flipper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Flipped state for card */
+.flipper.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back of the flip card */
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    text-align: center;
+    background: linear-gradient(135deg, #9bd1ba, #faf096, #faf6d5, #f7f0ad, #9bd1ba);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+/* Back side transformation */
+.back {
+    transform: rotateY(180deg);
+}
+
+/* Flip Button Styling */
+.flip-button {
+    margin: 5%;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--light-color);
+    color: var(--bright);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.flip-button:hover {
+    box-shadow: 6px 5px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+    background: var(--k);
+    transform: scale(1.1); /* Slight scale effect */
+}
+
+/* View Paid Class Button inside the Card */
+.view-paid-class-btn {
+    margin-top: 10px; /* Ensure a small margin */
+    padding: 10px 20px;
+    background: var(--light-color);
+    color: var(--bright);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.view-paid-class-btn:hover {
+    box-shadow: 6px 5px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+    background: var(--k);
+    transform: scale(1.1); /* Slight scale effect */
+}
+
+/* Countdown and Slot Text Styling */
+#slots, #timer {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Add a small margin to the divider between options */
+.heads {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+/* Additional styling for the class info section */
+.class-info {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Styling for the timer and slots */
+#slots, #timer {
+    font-size: 16px;
+    margin-top: 10px;
+}

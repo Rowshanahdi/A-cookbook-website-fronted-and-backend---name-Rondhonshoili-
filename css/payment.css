@@ -1,0 +1,234 @@
+:root {
+  --rb: #9bd1ba;
+  --w: #224d4d;
+  --k: #f69330;
+  --brigh: #eddb56;
+  --bright: #fdf6bc;
+  --black: #444;
+  --light-color: #4baa81;
+  --border: .4rem solid rgba(19, 24, 96, 0.548);
+  --border-hover: 1rem solid var(--black);
+  --box-shadow: 0 .5rem 1rem rgba(69, 122, 100, 0.017);
+  --brown: #9c5c32;
+}
+
+body {
+font-family: Arial, sans-serif;
+background: var(--rb);
+margin: 0;
+padding: 20px;
+display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.container {
+  width: 40%; /* 40% of screen width */
+  background: var(--rb); /* Keep original background */
+  padding: 40px;
+  margin: 50px auto; /* Center the box */
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+h1, h3 {
+  font-size: 32px; /* Slightly bigger headline size for overall headings */
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--w); /* Darker color for clarity */
+}
+
+label {
+  font-size: 18px; /* Increased font size for form labels */
+  font-weight: bold;
+  color: var(--w); /* Keeps the label text color consistent */
+  margin-top: 10px;
+}
+
+p.info {
+  font-size: 18px; /* Bigger text for payment info */
+  font-weight: normal;
+  color: var(--w); /* Consistent text color */
+  margin-top: 15px;
+}
+
+.radio-group p {
+  font-size: 20px; /* Medium font size for radio group heading */
+  color: var(--w);
+}
+
+.radio-group label {
+  font-size: 20px; /* Slightly bigger size for radio options */
+  font-weight: bold;
+}
+
+
+
+.payment-buttons {
+display: flex;
+justify-content: center;
+gap: 20px;
+margin-bottom: 20px;
+}
+
+.payment-buttons button {
+background: var(--light-color);
+color: var(--bright);
+padding: 15px 35px;
+border: none;
+border-radius: 28px;
+cursor: pointer;
+font-size: 20px;
+transition: 0.3s;
+font-style: italic;
+text-transform: inherit;
+font-family: 'Times New Roman', Times, serif;
+}
+
+.payment-buttons button:hover {
+color: var(--bright);
+transform: translateY(-3px);
+box-shadow: 6px 5px 15px rgba(0,0,0,0.3);
+background-color: var(--k);
+}
+
+.payment-form {
+display: none;
+}
+
+
+input, select, textarea {
+width: 100%;
+padding: 15px;
+margin: 12px 0;
+font-size: 18px;
+border-radius: 26px;
+border: 1px solid #ccc;
+background-color: #e0f9e0;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+text-transform: none;
+}
+
+input[type="file"],
+input[type="text"],
+input[type="email"] {
+width: 100%;
+}
+
+.payment-instruction {
+background: var(--rb);
+padding: 20px;
+margin-bottom: 20px;
+text-align: center;
+border: 1px solid #b7e2cc;
+border-radius: 5px;
+color: var(--w);
+font-size: 1.8rem;
+}
+
+.info {
+background: var(--rb);
+padding: 15px;
+border-left: 5px solid var(--w);
+margin-bottom: 15px;
+border-radius: 5px;
+color: var(--w);
+font-size: 1.1rem;
+}
+
+.radio-group {
+margin: 20px 0;
+background: none;
+color: var(--w);
+font-weight: bold;
+font-size: medium;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.radio-group label {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  background: none;
+  margin: 5px 0;
+  gap: 10px;
+}
+
+.radio-group input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #152c1c;
+  border-radius: 50%;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* Center blue dot when selected */
+.radio-group input[type="radio"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: #06270f;
+  border-radius: 50%;
+}
+
+
+.buttons {
+margin-top: 20px;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+}
+
+.buttons button {
+background-color: var(--light-color);
+padding: 14px 30px;
+color: var(--bright);
+border: none;
+border-radius: 28px;
+cursor: pointer;
+font-size: 20px;
+transition: 0.3s;
+font-style: italic;
+text-transform: inherit;
+font-family: 'Times New Roman', Times, serif;
+margin-top: 10px;
+}
+
+.buttons button:hover {
+color: var(--bright);
+transform: translateY(-3px);
+box-shadow: 6px 5px 15px rgba(0,0,0,0.3);
+background-color: var(--k);
+}
+
+.recipe-option {
+position: absolute;
+bottom: 15px;
+left: 50%;
+transform: translateX(-50%);
+background-color: var(--light-color);
+padding: 10px 20px;
+border-radius: 20px;
+color: var(--bright);
+font-size: 1.3rem;
+opacity: 0;
+transition: opacity 0.4s;
+pointer-events: none;
+}
+
+.recipe-option:hover {
+background: var(--k);
+color: var(--bright);
+}

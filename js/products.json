@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "The Recipe Chronicles",
+    "price": 150,
+    "image": "/static/img/recipieb1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Flavors of the World",
+    "price": 150,
+    "image": "/static/img/r2.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Kitchen magic tricks",
+    "price": 150,
+    "image": "/static/img/p3.jpg"
+  }
+]
