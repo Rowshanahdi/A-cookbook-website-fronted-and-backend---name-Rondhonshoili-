@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Rondhonshoili - Your Trusted Culinary Partner">
+    <meta name="keywords" content="cooking, bangladeshi recipes, Asian cuisine, food blog">
+    <meta name="author" content="Rondhonshoili">
+    <meta property="og:title" content="Rondhonshoili - Cooking Made Easy">
+    <meta property="og:description" content="Explore easy and delicious recipes at Rondhonshoili.">
+    <meta property="og:image" content="images/your-image.jpg">
+
+    <title>About Us - Rondhonshoili</title>
+
+    <!-- Icon and Font links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+
+    <style>
+       :root {
+    --rb: #9bd1ba;             /* Soft green */
+    --w: #224d4d;              /* Dark teal (main text) */
+    --k: #f69330;              /* Orange accent */
+    --bright: #fdf6bc;         /* Soft yellow */
+    --light-color: #4baa81;    /* Leaf green */
+}
+
+/* About Section Styling */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--rb);      /* Use your soft green */
+    color: var(--w);                  /* Dark teal text */
+}
+
+.about-section {
+    padding: 80px 40px 40px 40px;
+}
+/* Import fonts in your <head> */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+/* Title styling */
+.about-section h1 {
+    margin-top: 5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--w);               /* Your dark teal */
+  text-align: center;
+  letter-spacing: 1.2px;
+  padding-bottom: 0.5rem;
+  max-width: 400px;
+  margin: 0 auto 2rem auto;
+  cursor: default;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+
+.about-section p.intro {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: var(--w);
+    text-align: center;
+}
+
+.about-section .content {
+    max-width: 1000px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 16px;
+    color: #2b3a3a; /* Slightly lighter than var(--w) for content */
+}
+
+.about-section h2 {
+    font-size: 28px;
+    color:var(--w);
+    margin-top: 40px;
+}
+
+.highlights {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.highlight-box {
+    background-color: #d8f3c8;  /* soft yellow */
+    flex: 1 1 250px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: var(--w);
+}
+
+.highlight-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-box i {
+    font-size: 32px;
+    color: var(--light-color); /* orange accent */
+    margin-bottom: 12px;
+}
+
+.highlight-box h3 {
+    font-size: 20px;
+    color: var(--w);
+    margin-bottom: 10px;
+}
+
+.highlight-box p {
+    font-size: 14px;
+    color: #555;  /* keeps a nice contrast */
+}
+
+.back-btn {
+    display: inline-block;
+    margin: 50px auto 0;
+    padding: 14px 36px;
+    background-color: var(--light-color);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 40px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--k);
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    padding: 30px 10px;
+    background-color: #f0eab5;
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .highlight-box {
+        flex: 1 1 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+
+
+
+<header class="main-header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <a href="{% url 'homepage' %}" class="logo">Rondhonshoili</a>
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <a href="{% url 'homepage' %}">Home</a>
+         <a href="{% url 'About_us' %}">About</a>
+        <div class="dropdown">
+          <button class="dropbtn">Categories </button>
+          <div class="dropdown-content">
+            
+            <a href="{% url 'traditional' %}">Traditional</a>
+<a href="{% url 'snack' %}">Snacks & Sweets</a>
+<a href="{% url 'drinks' %}">Drinks</a>
+<a href="{% url 'popular' %}">Popular</a>
+ </div>
+        </div>
+      
+        <a href="{% url 'shop' %}">shop</a>
+       <div class="dropdown">
+  <button class="dropbtn">Cooking class</button>
+  <div class="dropdown-content">
+    <a href="{% url 'class_updates' %}#free-class">Online Free Class</a>
+    <a href="{% url 'class_updates' %}#paid-class" onclick="setTimeout(() => flipCard(), 200);">Online Paid Class</a>
+  </div>
+</div>
+ <a href="{% url 'reviews' %}">Reviews</a>
+        <a href="{% url 'contact' %}">Contact</a>
+  </nav>
+    </div>
+
+    <!-- Icons -->
+    <div class="icons">
+      <a href="{% url 'recipe' %}" title="Search"><i class="fas fa-search"></i></a>
+      <a href="{% url 'saved_recipes' %}" title="Wishlist"><i class="fas fa-heart"></i></a>
+     <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+
+        {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="fas fa-user" title="profile"></a>
+            {% else %}
+                <a href="{% url 'login' %}" class="fas fa-user" title="Log_in"></a>
+            {% endif %}
+         </div>
+
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
+    <!-- About Section -->
+    <section class="about-section">
+        <h1>About Rondhonshoili</h1>
+        <p class="intro">Empowering every home chef with simple, authentic, and delightful Bangladeshi and Asian recipes.</p>
+
+        <div class="content">
+            <h2>Who We Are</h2>
+            <p>
+                Rondhonshoili is more than just a recipe website — it's a growing community of passionate food lovers who believe in the magic of home-cooked meals.
+                Founded with love for traditional flavors and modern cooking styles, we bring carefully curated recipes that are both accessible and inspiring.
+                Whether you're looking to recreate your grandmother’s biryani or explore a new fusion dish, we are here to guide you step-by-step.
+            </p>
+
+            <h2>What We Offer</h2>
+            <div class="highlights">
+                <div class="highlight-box">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Authentic Recipes</h3>
+                    <p>We specialize in authentic Bangladeshi and Asian cuisine tailored for beginners and experts alike.</p>
+                </div>
+                <div class="highlight-box">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Online Cooking Classes</h3>
+                    <p>Join live classes with our expert chef and learn directly from the kitchen.</p>
+                </div>
+                <div class="highlight-box">
+                    <i class="fas fa-shopping-basket"></i>
+                    <h3>Cooking Essentials</h3>
+                    <p>Explore our carefully crafted recipe books filled with authentic, original recipes from our own kitchen — available now in our store.</p>
+                </div>
+                <div class="highlight-box">
+                    <i class="fas fa-heart"></i>
+                    <h3>Community & Care</h3>
+                    <p>We value feedback, share cooking tips, and celebrate food stories from our users.</p>
+                </div>
+            </div>
+
+            <h2>Our Vision</h2>
+            <p>
+                Our mission is to keep traditional recipes alive while introducing innovative approaches to everyday cooking.
+                We want to be every home cook’s most trusted partner in the kitchen, turning simple meals into special memories.
+            </p>
+
+            <div style="text-align: center;">
+                <a href="{% url  'homepage'%}" class="back-btn">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+ 
+</body>
+</html>

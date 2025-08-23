@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rondhonshoili Profile</title>
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  <style>
+
+    :root {
+    --rb: #9bd1ba;
+    --w: #224d4d;
+    --k: #f69330;
+    --brigh: #eddb56;
+    --bright: #fdf6bc;
+    --black: #444;
+    --light-color: #4baa81;
+    --border: .4rem solid rgba(19, 24, 96, 0.548);
+    --border-hover: 1rem solid var(--black);
+    --box-shadow: 0 .5rem 1rem rgba(69, 122, 100, 0.017);
+    --brown: #9c5c32;
+  }
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+   
+      background:linear-gradient(135deg, #9bd1ba, #faf096, #faf6d5, #f7f0ad, #9bd1ba);
+   
+      color:var(--w);
+    }
+
+    .container {
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background-color:var(--rb);
+      color:var(--bright);
+      height: 200vh;
+      padding: 20px;
+    }
+
+    .sidebar .logo {
+       font-family: 'Times New Roman', Times, serif;
+   
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li {
+      margin-bottom: 18px;
+    }
+
+    .menu a {
+      color:var(--bright);
+      text-decoration: none;
+      font-family: 'Times New Roman', Times, serif;
+   ;
+      font-size: 1.2rem;
+      display: block;
+      transition: 0.2s ease;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      color: #ffddc1;
+      font-weight: bold;
+    }
+
+    /* Main content */
+    .main {
+      height: auto;
+      flex-grow: 1;
+      padding: 30px;
+      background:linear-gradient(135deg, #9bd1ba, #faf096, #faf6d5, #f7f0ad, #9bd1ba);
+   ;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+    }
+
+    /* Profile form styling */
+    .section form {
+      max-width: 460px;
+      margin: 0 auto;
+      background:transparent;
+      padding: 25px;
+      border-radius: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .section form label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    .section form input {
+      width: 90%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #101e05df;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      font-style: italic;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .section form button {
+      margin-top: 20px;
+      margin-left: 30%;
+      width: 40%;
+      background-color:var(--light-color);
+      color: var(--bright);
+      padding: 12px;
+      border: none;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .section form button:hover {
+      background-color:var(--k);
+    }
+
+    /* Orders */
+    .order {
+      background-color: #fff9f2;
+      border: 1px solid #f1c40f;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+
+    .order h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #c0392b;
+      border-bottom: 1px dashed #e67e22;
+      padding-bottom: 6px;
+    }
+
+    .order p {
+      margin: 6px 0;
+      font-size: 0.95rem;
+    }
+
+    .order ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .order ul li {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Toast */
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .toast {
+      background-color: #27ae60;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">Rondhonshoili</div>
+      <ul class="menu">
+        <li><a href="#" onclick="showSection('profile'); return false;" class="active">Profile</a></li>
+        <li><a href="#" onclick="showSection('orders'); return false;">My Orders</a></li>
+        <li><a href="{% url 'homepage' %}">Back to Website</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="welcome">
+        <h2>Welcome, {{ user.username }}!</h2>
+      </div>
+
+      <!-- Profile Form -->
+      <div id="profile" class="section" style="display: block;">
+        <h2>Edit Profile</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <label>Name:</label>
+          <input type="text" name="username" value="{{ user.username }}" required>
+
+          <label>Email:</label>
+          <input type="email" name="email" value="{{ user.email }}" required>
+
+          <label>Change Password:</label>
+          <input type="password" name="password" placeholder="Leave blank if no change">
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Orders Section -->
+      <div id="orders" class="section" style="display: none;">
+        <h2>Your Orders</h2>
+        {% if orders %}
+          {% for order in orders %}
+            <div class="order">
+              <h3>Order</h3>
+              <p>Total: {{ order.total }}</p>
+              <p>Ordered on: {{ order.created_at }}</p>
+              <ul>
+                {% for item in order.items.all %}
+                  <li>{{ item.product.name }} — Qty: {{ item.quantity }} — ৳{{ item.price }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>You have no orders yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  {% if messages %}
+    <div class="toast-container">
+      {% for message in messages %}
+        <div class="toast">{{ message }}</div>
+      {% endfor %}
+    </div>
+    <script>
+      setTimeout(() => {
+        document.querySelector('.toast')?.remove();
+      }, 3000);
+    </script>
+  {% endif %}
+
+  <!-- JS: Section toggle -->
+  <script>
+    function showSection(sectionId) {
+      event.preventDefault();
+
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+      // Show selected
+      document.getElementById(sectionId).style.display = 'block';
+
+      // Set active sidebar link
+      document.querySelectorAll('.menu a').forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

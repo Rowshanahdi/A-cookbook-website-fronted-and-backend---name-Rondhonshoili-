@@ -1,0 +1,283 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Us – Rondhonshoili</title>
+
+  <!-- Link your existing main CSS that styles header + rest -->
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+ 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --rb: #9bd1ba;
+      --w: #224d4d;
+      --k: #f69330;
+      --brigh: #eddb56;
+      --hover-border: #336666; /* subtle dark teal */
+    }
+
+    .contact-section {
+      max-width: 2560px;
+      margin-top: 19rem;
+      margin: 3.5rem auto;
+      padding: 2rem 3rem;
+      background: #e2e8bc;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.8s ease;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--w);
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    /* Messages styling */
+    .alert {
+      padding: 1rem 1.5rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      font-size: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(189, 247, 185, 0.785);
+      animation: fadeIn 0.7s ease;
+      width: 100%;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .alert-success {
+      background-color: #a0f6d2;
+      color:var(--w);
+    }
+    .alert-error {
+      background-color: #e74c3c;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(231, 76, 60, 0.6);
+    }
+
+    .contact-form .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 1.8rem 2.5rem;
+    }
+
+    .field label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--w);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 1.3rem 1.8rem;
+      border: 2px solid var(--w);
+      border-radius: 1rem;
+      font-size: 1.4rem;
+      font-family: inherit;
+      color: #222;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .field input:hover,
+    .field select:hover,
+    .field textarea:hover,
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--hover-border);
+      box-shadow: 0 0 5px var(--hover-border);
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 180px;
+      resize: vertical;
+      color: #222;
+    }
+
+    .field-wide {
+      grid-column: 1 / -1;
+    }
+
+    /* Submit button */
+    .btn-primary {
+      margin: 2rem auto 0 auto;
+      padding: 1rem 4rem;
+      background: var(--w);
+      color: #fff;
+      border: none;
+      border-radius: 2.5rem;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: block;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+         color: #fff;
+      background-color: #e68322;
+      transform: scale(1.07);
+      outline: none;
+    }
+
+    /* Contact us email footer */
+    .contact-footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 1.5rem;
+      color: var(--w);
+      font-weight: 600;
+      font-style: italic;
+      border-top: 2px solid var(--w);
+      padding-top: 1.2rem;
+      
+    }
+
+    .contact-footer a {
+          margin: 0 0 1rem 0;
+      color: #71715e;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .contact-footer a:hover {
+      color: #173e15;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+
+  
+<header class="main-header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <a href="{% url 'homepage' %}" class="logo">Rondhonshoili</a>
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <a href="{% url 'homepage' %}">Home</a>
+         <a href="{% url 'About_us' %}">About</a>
+        <div class="dropdown">
+          <button class="dropbtn">Categories </button>
+          <div class="dropdown-content">
+            
+            <a href="{% url 'traditional' %}">Traditional</a>
+<a href="{% url 'snack' %}">Snacks & Sweets</a>
+<a href="{% url 'drinks' %}">Drinks</a>
+<a href="{% url 'popular' %}">Popular</a>
+ </div>
+        </div>
+      
+        <a href="{% url 'shop' %}">shop</a>
+       <div class="dropdown">
+  <button class="dropbtn">Cooking class</button>
+  <div class="dropdown-content">
+    <a href="{% url 'class_updates' %}#free-class">Online Free Class</a>
+    <a href="{% url 'class_updates' %}#paid-class" onclick="setTimeout(() => flipCard(), 200);">Online Paid Class</a>
+  </div>
+</div>
+ <a href="{% url 'reviews' %}">Reviews</a>
+        <a href="{% url 'contact' %}">Contact</a>
+  </nav>
+    </div>
+
+    <!-- Icons -->
+    <div class="icons">
+      <a href="{% url 'recipe' %}" title="Search"><i class="fas fa-search"></i></a>
+      <a href="{% url 'saved_recipes' %}" title="Wishlist"><i class="fas fa-heart"></i></a>
+     <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+
+        {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="fas fa-user" title="profile"></a>
+            {% else %}
+                <a href="{% url 'login' %}" class="fas fa-user" title="Log_in"></a>
+            {% endif %}
+         </div>
+
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr><hr><br><br><br><br><hr>
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2 class="section-title">Get in touch</h2>
+
+   <!-- Replace the messages section in your template with: -->
+{% if contact_messages %}
+  {% for message in contact_messages %}
+    <p class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</p>
+  {% endfor %}
+{% endif %}
+
+    <form method="post" class="contact-form">
+      {% csrf_token %}
+      <div class="form-grid">
+        <div class="field">{{ form.full_name.label_tag }}{{ form.full_name }}</div>
+        <div class="field">{{ form.email.label_tag }}{{ form.email }}</div>
+        <div class="field">{{ form.country.label_tag }}{{ form.country }}</div>
+        <div class="field">{{ form.enquiry_for.label_tag }}{{ form.enquiry_for }}</div>
+        <div class="field">{{ form.subject.label_tag }}{{ form.subject }}</div>
+        <div class="field field-wide">{{ form.message.label_tag }}{{ form.message }}</div>
+      </div>
+      <button type="submit" class="btn-primary">Submit</button>
+    </form>
+
+    <div class="contact-footer">
+      Or contact us via email at
+      <a href="mailto:contact@rondhonshoili.com">contact@rondhonshoili.com</a>
+    </div>
+  </section>
+
+</body>
+</html>

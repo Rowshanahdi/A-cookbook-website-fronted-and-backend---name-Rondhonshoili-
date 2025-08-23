@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmed</title>
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      padding: 100px;
+      background-color: #e7f9f0;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #224d4d;
+    }
+    p {
+      font-size: 1.5rem;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      background: #4baa81;
+      padding: 10px 30px;
+      border-radius: 20px;
+      margin-top: 20px;
+      display: inline-block;
+    }
+    a:hover {
+      background: #f69330;
+    }
+  </style>
+</head>
+<body>
+  <h1>Order Confirmed!</h1>
+  <p>Thank you for your order. You will receive a confirmation call soon.</p>
+  <a href="{% url 'homepage' %}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,233 @@
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rondhonshoili - Your go-to website for recipes and more.">
+    <meta name="keywords" content="recipe, food, cooking, bangladesh">
+    <meta name="author" content="Your Name">
+    <meta property="og:title" content="Rondhonshoili - Cooking Made Easy">
+    <meta property="og:description" content="Explore easy and delicious recipes at Rondhonshoili.">
+    <meta property="og:image" content="images/your-image.jpg">
+
+<title>Rondhonshoili</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/homepage.css'%}">
+    
+<link rel="stylesheet" href="swiper-bundle.min.css">
+ <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+</head>
+<body>
+
+<header class="main-header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <a href="{% url 'homepage' %}" class="logo">Rondhonshoili</a>
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <a href="{% url 'homepage' %}">Home</a>
+         <a href="{% url 'About_us' %}">About</a>
+        <div class="dropdown">
+          <button class="dropbtn">Categories </button>
+          <div class="dropdown-content">
+            
+            <a href="{% url 'traditional' %}">Traditional</a>
+<a href="{% url 'snack' %}">Snacks & Sweets</a>
+<a href="{% url 'drinks' %}">Drinks</a>
+<a href="{% url 'popular' %}">Popular</a>
+ </div>
+        </div>
+      
+        <a href="{% url 'shop' %}">shop</a>
+       <div class="dropdown">
+  <button class="dropbtn">Cooking class</button>
+  <div class="dropdown-content">
+    <a href="{% url 'class_updates' %}#free-class">Online Free Class</a>
+    <a href="{% url 'class_updates' %}#paid-class" onclick="setTimeout(() => flipCard(), 200);">Online Paid Class</a>
+  </div>
+</div>
+ <a href="{% url 'reviews' %}">Reviews</a>
+        <a href="{% url 'contact' %}">Contact</a>
+  </nav>
+    </div>
+
+    <!-- Icons -->
+    <div class="icons">
+      <a href="{% url 'recipe' %}" title="Search"><i class="fas fa-search"></i></a>
+      <a href="{% url 'saved_recipes' %}" title="Wishlist"><i class="fas fa-heart"></i></a>
+     <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+
+        {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="fas fa-user" title="profile"></a>
+            {% else %}
+                <a href="{% url 'login' %}" class="fas fa-user" title="Log_in"></a>
+            {% endif %}
+         </div>
+
+  </div>
+</header>
+
+<style>
+  .reviews-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+.review-card {
+    width: 130rem;
+    
+    background: rgba(255, 255, 255, 0.12);
+    padding: 15px 20px;
+    border-radius: 50px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    min-height: 60px;
+}
+
+
+
+.food-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.review-body {
+    flex-grow: 1;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.rating i {
+    color: gold;
+    font-size: 1.2rem;
+}
+
+.review-date {
+    font-size: 1.7rem;
+    color: #777;
+}
+
+.review-content p {
+    font-size: 1.7rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+
+
+.view-recipe-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #063317;
+    color: #fafaf8;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.view-recipe-btn:hover {
+    background-color: #f5a910;
+}
+
+.avatar-img {
+    width: 40px;
+    height: 50px;
+    border-radius: 2opx;
+    object-fit: cover;
+    margin-left: 20px;
+}
+
+
+</style>
+
+<div class="reviews-page-container">
+    <h1> Reviews </h1>
+    
+    <div class="reviews-column">
+       {% for review in reviews %}
+<div class="review-card">
+    
+    <!-- Show the recipe image the user commented on -->
+    {% if review.recipe.image %}
+        <img src="{{ review.recipe.image.url }}" alt="{{ review.recipe.title }}" class="food-image">
+    {% endif %}
+
+    <div class="review-body">
+
+        <!-- Header: Name, Stars, Date, Avatar -->
+        <div class="review-header">
+            <div class="user-info">
+                <h3>{{ review.name }}</h3>
+                <div class="rating">
+                    {% for i in '12345' %}
+                        {% if i|add:0 <= review.rating %}
+                            <i class="fas fa-star"></i>
+                        {% else %}
+                            <i class="far fa-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <span class="review-date">{{ review.created_at|date:"F j, Y" }}</span>
+            </div>
+
+            {% if review.user.profile.avatar %}
+                <img src="{{ review.user.profile.avatar.url }}" alt="{{ review.user.username }}" class="avatar-img">
+            {% endif %}
+        </div>
+
+        <!-- Comment Text -->
+        <div class="review-content">
+            <p>{{ review.comment }}</p>
+        </div>
+
+        <!-- View Recipe Link -->
+        <div class="review-footer">
+           <a href="{% url 'recipe_detail' review.recipe.slug %}" class="view-recipe-btn">
+    View Recipe <i class="fas fa-arrow-right"></i>
+</a>
+ </a>
+        </div>
+    </div>
+</div>
+{% empty %}
+    <div class="no-reviews">
+        <p>No reviews yet. Be the first to review!</p>
+    </div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

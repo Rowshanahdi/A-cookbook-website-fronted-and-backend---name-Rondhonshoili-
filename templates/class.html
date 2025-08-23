@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Class Updates - Rondhonsoili</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/homepage.css" />
+  <link rel="stylesheet" href="css/class.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-1">
+      <nav class="navbar">
+        <a href="homepage.html">HOME</a>
+        <a href="class.html">CLASS</a>
+        <a href="shop.html">SHOP</a>
+      </nav>
+      <a href="homepage.html" class="logo">Rondhonshoili</a>
+      <div class="icons">
+        <a href="recipe.html" class="fas fa-search"></a>
+        <a href="#" class="fas fa-heart"></a>
+        <a href="cart.html" class="fas fa-shopping-cart"></a>
+        <a href="log.html" class="fas fa-user"></a>
+      </div>
+    </div>
+  </header>
+
+  <br><br><br><br><br><br>
+
+  <div class="heads">
+    <h1>Upcoming Cooking Classes</h1>
+  </div>
+
+  <div class="flip-container">
+    <div class="flipper" id="flipCard">
+      <!-- Front: Free Class -->
+      <div class="front class-info">
+        <h2>Next Free Cooking Class</h2>
+        <p><strong>Topic:</strong> Authentic Asian Cuisine (Ilish Polao)</p>
+        <p><strong>Date:</strong> April 14, 2025</p>
+        <p><strong>Time:</strong> 5:00 PM - 7:00 PM</p>
+        <p><strong>Instructor:</strong> Chef Alo</p>
+
+        <p id="slots">Slots left: 10</p>
+        <p id="timer">Time left: 60s</p>
+
+        <button id="joinBtn" class="flip-button">Join This Class</button>
+
+        <div class="heads">-----or-----</div>
+
+        <!-- View Paid Class inside the box -->
+        <button class="flip-button view-paid-class-btn" onclick="flipCard()">View Paid Class</button>
+      </div>
+
+      <!-- Back: Paid Class -->
+      <div class="back paid-class">
+        <h2>Upcoming Paid Cooking Class</h2>
+        <p><strong>Topic:</strong> Japanese Garlic Fried Rice</p>
+        <p><strong>Date:</strong> April 25, 2025</p>
+        <p><strong>Time:</strong> 6:00 PM - 8:00 PM</p>
+        <p><strong>Instructor:</strong> Chef Alo</p>
+        
+        <button class="flip-button">Add to Class</button><br>
+        <button class="flip-button" onclick="flipCard()">Back to Free Class</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function flipCard() {
+      document.getElementById("flipCard").classList.toggle("flipped");
+    }
+
+    let slots = 10;
+    let countdown = 60;
+    let timer = null;
+
+    const slotsText = document.getElementById("slots");
+    const timerText = document.getElementById("timer");
+    const joinBtn = document.getElementById("joinBtn");
+
+    function updateDisplay() {
+      slotsText.textContent = `Slots left: ${slots}`;
+      timerText.textContent = `Time left: ${countdown}s`;
+    }
+
+    function startCountdown() {
+      timer = setInterval(() => {
+        countdown--;
+        updateDisplay();
+
+        if (countdown <= 0 || slots <= 0) {
+          clearInterval(timer);
+          joinBtn.disabled = true;
+          joinBtn.textContent = slots <= 0 ? "Class Full" : "Class Closed";
+        }
+      }, 1000);
+    }
+
+    joinBtn.addEventListener("click", () => {
+      if (slots > 0 && countdown > 0) {
+        slots--;
+        updateDisplay();
+        if (slots <= 0) {
+          clearInterval(timer);
+          joinBtn.disabled = true;
+          joinBtn.textContent = "Class Full";
+        }
+      }
+    });
+
+    window.onload = () => {
+      updateDisplay();
+      startCountdown();
+    };
+  </script>
+</body>
+</html>

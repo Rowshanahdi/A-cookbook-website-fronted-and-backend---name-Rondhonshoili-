@@ -1,0 +1,302 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Class Updates - Rondhonsoili</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/class_design.css' %}" />
+</head>
+<body>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<header class="main-header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <a href="{% url 'homepage' %}" class="logo">Rondhonshoili</a>
+
+    <!-- Navbar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <a href="{% url 'homepage' %}">Home</a>
+         <a href="{% url 'About_us' %}">About</a>
+        <div class="dropdown">
+          <button class="dropbtn">Categories </button>
+          <div class="dropdown-content">
+            
+            <a href="{% url 'traditional' %}">Traditional</a>
+<a href="{% url 'snack' %}">Snacks & Sweets</a>
+<a href="{% url 'drinks' %}">Drinks</a>
+<a href="{% url 'popular' %}">Popular</a>
+ </div>
+        </div>
+      
+        <a href="{% url 'shop' %}">shop</a>
+       <div class="dropdown">
+  <button class="dropbtn">Cooking class</button>
+  <div class="dropdown-content">
+    <a href="{% url 'class_updates' %}#free-class">Online Free Class</a>
+    <a href="{% url 'class_updates' %}#paid-class" onclick="setTimeout(() => flipCard(), 200);">Online Paid Class</a>
+  </div>
+</div>
+ <a href="{% url 'reviews' %}">Reviews</a>
+        <a href="{% url 'contact' %}">Contact</a>
+  </nav>
+    </div>
+
+    <!-- Icons -->
+    <div class="icons">
+      <a href="{% url 'recipe' %}" title="Search"><i class="fas fa-search"></i></a>
+      <a href="{% url 'saved_recipes' %}" title="Wishlist"><i class="fas fa-heart"></i></a>
+     <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+
+        {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="fas fa-user" title="profile"></a>
+            {% else %}
+                <a href="{% url 'login' %}" class="fas fa-user" title="Log_in"></a>
+            {% endif %}
+         </div>
+
+  </div>
+</header>
+
+
+<br><br><br><br><br>
+
+
+  <div class="flip-container" id="classFlipCard">
+    <div class="flipper" id="flipCard">
+      <!-- Front: Free Class --> 
+      <div class="front class-info"  id="free-class">
+        <br><br>
+        <h2>Next Free Cooking Class</h2><br>
+        <p><strong>Topic:</strong> Authentic Asian Cuisine (Ilish Polao)</p>
+        <p><strong>Date:</strong> August 12, 2025</p>
+        <p><strong>Time:</strong> 5:00 PM - 7:00 PM</p>
+        <p><strong>Instructor:</strong> Chef Alo</p>
+      <br>  {% if user.is_authenticated %}
+  <button class="flip-button" onclick="showFreeForm()">add to class</button>
+{% else %}
+  <a href="{% url 'login' %}" class="flip-button">Login to Join</a>
+{% endif %}
+
+        
+        <div class="heads">-----or-----</div>
+        <button class="flip-button" onclick="flipCard()">View Paid Class</button>
+      </div>
+      <br>
+
+
+      <!-- Back: Paid Class -->
+      <div class="back paid-class" id="paid-class"><br><br>
+        <h2>Upcoming Paid Cooking Class</h2><br>
+        <p><strong>Topic:</strong> Japanese Garlic Fried Rice</p>
+        <p><strong>Date:</strong> August 5, 2025</p>
+        <p><strong>Time:</strong> 6:00 PM - 8:00 PM</p>
+        <p><strong>Instructor:</strong> Chef Alo</p>
+        <p><strong>Payment:</strong> 200tk</p>
+        
+       <br> {% if user.is_authenticated %}
+  <button class="flip-button" onclick="showPaidForm()">add to class</button>
+{% else %}
+  <a href="{% url 'login' %}" class="flip-button">Login to Join</a>
+{% endif %}
+<br>
+
+
+
+
+
+        <button class="flip-button" onclick="flipCard()">Back to Free Class</button>
+      </div>
+    </div>
+  </div>
+
+
+
+{% if messages %}
+  <div class="toast-container" style="font-family: 'Times New Roman', Times, serif;font-size: medium;background-color: azure;">
+    {% for message in messages %}
+      <div class="toast">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+  <script>
+    function flipCard() {
+      const flipElement = document.getElementById("flipCard");
+      flipElement.classList.toggle("flipped");
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if user.is_authenticated %}
+<!-- Registration Form Section -->
+<div id="registrationBox" class="registration-box hidden">
+  <h2>Course Registration</h2>
+  <form id="registrationForm" method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    
+   <label for="full_name">Full Name</label>
+<input type="text" id="full_name" name="full_name" required />
+
+<label for="contact">Contact Number</label>
+<input type="text" id="contact" name="contact" required />
+
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" required />
+
+    <p class="note">Zoom class link will be sent to this email 1 day before the class.</p>
+
+    <div id="paidSection" class="hidden">
+      <p><strong>Payment Instructions:</strong></p>
+      <ul>
+        <li>Bkash: 01813551594</li>
+        <li>Nagad: 01813551594</li>
+        <li>Rocket: 01813551594</li>
+      </ul>
+
+      <label for="paymentInfo">Transaction ID </label>
+     
+
+      <input type="text" id="transactionId" name="transactionId" placeholder="Enter Transaction ID" class="payment-input" />
+     </div>
+
+    <button type="submit" class="flip-button" id="submitBtn">Enroll</button>
+
+
+    <button type="button" class="flip-button" id="backBtn">Back</button>
+  </form>
+</div>
+{% else %}
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+<script>
+function flipCard() {
+  document.getElementById("flipCard").classList.toggle("flipped");
+}
+
+const registrationForm = document.getElementById("registrationForm");
+const paidSection = document.getElementById("paidSection");
+const submitBtn = document.getElementById("submitBtn");
+const backBtn = document.getElementById("backBtn");
+const flipContainer = document.querySelector(".flip-container");
+
+// Free class add button
+document.querySelectorAll('.front .flip-button')[0].addEventListener('click', () => {
+  registrationBox.classList.remove("hidden");
+  paidSection.classList.add("hidden");
+  registrationForm.action = "{% url 'register_free_class' %}";
+  submitBtn.textContent = "Enroll for Free";
+  flipContainer.classList.add("hidden");
+});
+
+// Paid class add button
+document.querySelectorAll('.back .flip-button')[0].addEventListener('click', () => {
+  registrationBox.classList.remove("hidden");
+  paidSection.classList.remove("hidden");
+  registrationForm.action = "{% url 'register_paid_class' %}";
+  submitBtn.textContent = "Submit Payment Info";
+  flipContainer.classList.add("hidden");
+});
+
+// Back button
+backBtn.addEventListener("click", () => {
+  registrationBox.classList.add("hidden");
+  flipContainer.classList.remove("hidden");
+});
+
+</script>
+
+
+
+<script>const transactionRadio = document.getElementById("transactionRadio");
+  const fileRadio = document.getElementById("fileRadio");
+  const transactionId = document.getElementById("transactionId");
+  const paymentScreenshot = document.getElementById("paymentScreenshot");
+  
+  // Radio Button Event Listeners
+  transactionRadio.addEventListener('change', () => {
+    // Show Transaction ID input, hide File input
+    transactionId.style.display = "block";
+    paymentScreenshot.style.display = "none";
+  });
+  
+  fileRadio.addEventListener('change', () => {
+    // Show File input, hide Transaction ID input
+    transactionId.style.display = "none";
+    paymentScreenshot.style.display = "block";
+  });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  // Flip automatically if URL contains #paid-class
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#paid-class') {
+      flipCard(); // This will auto-flip the card to show paid class
+    }
+  });
+</script>
+
+
+
+
+
+
+</body>
+</html>
