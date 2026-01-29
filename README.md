@@ -38,6 +38,8 @@ Additionally ,i added auto email programme after submitting info  of paid cookin
 <img width="825" height="334" alt="image" src="https://github.com/user-attachments/assets/f279fcff-78a9-4c6c-b76d-11f5f4fa0205" />
 
 <img width="820" height="350" alt="image" src="https://github.com/user-attachments/assets/976a36fc-7909-41a6-813f-75206b5ccf24" />
+<img width="1045" height="282" alt="image" src="https://github.com/user-attachments/assets/226056ec-d5ca-4adf-ae82-ae05fdb2443c" />
+<img width="473" height="521" alt="image" src="https://github.com/user-attachments/assets/2f6d1aef-77e4-4ce6-9aae-5df2943d0780" />
 
 <img width="566" height="312" alt="image" src="https://github.com/user-attachments/assets/0e6f729f-a277-4e52-851f-2904e15d1898" />
 
